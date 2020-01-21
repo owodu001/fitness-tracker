@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const mongojs = require("mongojs");
+const path = require("path")
 
 const PORT = process.env.PORT || 3000
 
@@ -9,7 +10,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 // let db = null;
 
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
@@ -56,10 +57,10 @@ function registerRoutes() {
             res.send("data saved:" + docInserted._id);
         });
     });
-    0
 
-
-
+    app.get("/workouts/stats", (req, res) => {
+        res.sendFile(path.join(__dirname, "./public/stats.html"));
+    });
 
     app.get("/", (req, res) => {
         res.send("Hello world");
