@@ -34,7 +34,7 @@ function registerRoutes() {
   });
   // "5e24c2bfbe7d1637c459b0dc"
   // mongojs.ObjectId(null)
-  app.post("/workouts", (req, res) => {
+  app.post("/exercise", (req, res) => {
     let id = req.query.id;
     const name = req.query.name;
     if (req.query.id) {
@@ -46,14 +46,14 @@ function registerRoutes() {
         _id: id,
         day: Date.now(),
         excercises: [
-          {
-            name: name,
-            type: "testType",
-            duration: "10",
-            weight: 500,
-            reps: 2,
-            sets: 2
-          }
+          //   {
+          //     name: name,
+          //     type: "testType",
+          //     duration: "10",
+          //     weight: 500,
+          //     reps: 2,
+          //     sets: 2
+          //   }
         ]
       },
       (err, docInserted) => {
@@ -63,12 +63,12 @@ function registerRoutes() {
     );
   });
 
-  app.get("/workouts/stats", (req, res) => {
+  app.get("/stats", (req, res) => {
     res.sendFile(path.join(__dirname, "./public/stats.html"));
   });
 
-  app.get("/", (req, res) => {
-    res.send("Hello world");
+  app.get("/exercise", (req, res) => {
+    res.sendFile(path.join(__dirname, "./public/exercise.html"));
   });
 
   app.get("/workouts/range", (req, res) => {
@@ -88,7 +88,7 @@ function registerRoutes() {
 }
 
 // routes
-// app.use(require("./routes/api.js"));
+app.use(require("./routes/apiroutes"));
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
