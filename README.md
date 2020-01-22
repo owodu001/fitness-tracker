@@ -2,6 +2,8 @@
 
 ## Live Link:
 
+https://michelles-fitness-tracker.herokuapp.com/
+
 ## Description
 
 This application is a fitness tracker allowing users to add exercises to previous and new workout plans. A Mongo database was created along with a Mongoose schema. Routes are handled with Express.
