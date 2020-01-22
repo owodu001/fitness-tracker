@@ -5,8 +5,8 @@ const Workout = require("../models/workout");
 // gets all workouts
 app.get("/api/workouts", (req, res) => {
   Workout.find({})
-    .then(dbWorkout => {
-      res.json(dbWorkout);
+    .then(Workout => {
+      res.json(Workout);
     })
     .catch(err => {
       res.json(err);
@@ -18,8 +18,8 @@ app.post("/api/workouts", (req, res) => {
   Workout.create({
     exercises: []
   })
-    .then(dbWorkout => {
-      res.json(dbWorkout);
+    .then(Workout => {
+      res.json(Workout);
     })
     .catch(err => {
       res.json(err);
@@ -28,9 +28,8 @@ app.post("/api/workouts", (req, res) => {
 
 app.get("/api/workouts/range", (req, res) => {
   Workout.find({})
-    .limit(3)
-    .then(dbWorkout => {
-      res.json(dbWorkout);
+    .then(Workout => {
+      res.json(Workout);
     })
     .catch(err => {
       res.json(err);
@@ -46,9 +45,9 @@ app.put("/api/workouts/:id", ({ body, params }, res) => {
     },
     { new: true, runValidators: true }
   )
-    .then(dbWorkout => {
-      console.log(dbWorkout);
-      res.json(dbWorkout);
+    .then(Workout => {
+      console.log(Workout);
+      res.json(Workout);
     })
     .catch(err => {
       res.json(err);
